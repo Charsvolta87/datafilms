@@ -47,3 +47,9 @@ export async function deleteTitle(id) {
   const itemRef = ref(db, `${COLLECTION}/${id}`);
   await remove(itemRef);
 }
+
+export async function getTitleById(id) {
+  const snapshot = await get(child(ref(db), `catalog/${id}`));
+  if (!snapshot.exists()) return null;
+  return snapshot.val();
+}
