@@ -16,7 +16,7 @@ function router() {
   else if (route === "#/series") {
     renderSeries(app);
   } 
-  else if (route === "#/actors") {
+  else if (route === "#/actor") {
     renderActors(app);
   } 
   else {
