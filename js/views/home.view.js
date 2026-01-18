@@ -9,7 +9,7 @@ export async function renderHome(container) {
   container.innerHTML = `
     <h2>Catálogo</h2>
     ${renderSortButton()}
-    ${renderFilters()}
+    
     <div class="grid" id="homeGrid"></div>
   `;
 
