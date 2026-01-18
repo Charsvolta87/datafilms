@@ -1,18 +1,22 @@
-async function router() {
-  const route = location.hash.slice(2).split("/");
+import { renderHome } from "./views/home.view.js";
+import { renderMovies } from "./views/movies.view.js";
+import { renderSeries } from "./views/series.view.js";
+
+const app = document.getElementById("app");
+
+function router() {
+  const route = location.hash || "#/";
+
   app.innerHTML = "";
 
-  switch (route[0]) {
-    case "":
-      renderHome(app);
-      break;
-    case "movies":
-      await renderMovies(app);
-      break;
-    case "series":
-      await renderSeries(app);
-      break;
-    default:
-      app.innerHTML = "<h2>Página no encontrada</h2>";
+  if (route === "#/movies") {
+    renderMovies(app);
+  } else if (route === "#/series") {
+    renderSeries(app);
+  } else {
+    renderHome(app);
   }
 }
+
+window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
