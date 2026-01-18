@@ -1,34 +1,26 @@
-import {
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-import { db } from "../firebase.js";
+import { db, ref, push, set, get, child } from "../firebase.js";
 
 const COLLECTION = "catalog";
 
 /* Guardar título */
 export async function addTitle(data) {
-  await addDoc(collection(db, COLLECTION), {
+  const newRef = push(ref(db, COLLECTION));
+  await set(newRef, {
     ...data,
     createdAt: Date.now()
   });
 }
 
-/* Obtener TODO el catálogo */
+/* Obtener todo el catálogo */
 export async function getCatalog() {
-  const q = query(
-    collection(db, COLLECTION),
-    orderBy("createdAt", "desc")
-  );
+  const snapshot = await get(child(ref(db), COLLECTION));
 
-  const snapshot = await getDocs(q);
+  if (!snapshot.exists()) return [];
 
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
+  const data = snapshot.val();
+
+  return Object.keys(data).map(id => ({
+    id,
+    ...data[id]
+  })).sort((a, b) => b.createdAt - a.createdAt);
 }

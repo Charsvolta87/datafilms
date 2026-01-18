@@ -27,10 +27,10 @@ form.addEventListener("submit", async e => {
 
   try {
     await addTitle(item);
-    alert("Guardado en Firebase ✅");
+    alert("Guardado en Realtime Database ✅");
     form.reset();
   } catch (err) {
-    alert("Error al guardar ❌");
     console.error(err);
+    alert("Error al guardar ❌");
   }
 });

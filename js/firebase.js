@@ -1,10 +1,17 @@
-// Firebase CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { initializeFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  set,
+  get,
+  child
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCGIkqTCq8tXbclZVNUnEmPUgNgVRXz_H0",
   authDomain: "datafilms-d3160.firebaseapp.com",
+  databaseURL: "https://datafilms-d3160-default-rtdb.firebaseio.com",
   projectId: "datafilms-d3160",
   storageBucket: "datafilms-d3160.appspot.com",
   messagingSenderId: "554321965868",
@@ -13,7 +20,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// 👇 COMPATIBLE CON BRAVE / ADBLOCK / VPN
-export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true
-});
+// Realtime Database
+export const db = getDatabase(app);
+export { ref, push, set, get, child };
