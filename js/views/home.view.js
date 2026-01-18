@@ -7,7 +7,7 @@ export async function renderHome(container) {
   const titles = (await getCatalog()).filter(i => i.type === "home");
 
   container.innerHTML = `
-    <h2>Últimos agregados</h2>
+    <h2>Catálogo</h2>
     ${renderSortButton()}
     ${renderFilters()}
     <div class="grid" id="homeGrid"></div>
