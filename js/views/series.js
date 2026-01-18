@@ -1,14 +1,15 @@
-import { series } from "../data/series.js";
-import { getStoredData } from "../data/storage.js";
+import { getCatalog } from "../data/catalog.service.js";
 
-export function renderSeries(app) {
-  const stored = getStoredData().filter(i => i.type === "series");
-  const all = [...series, ...stored];
+export async function renderSeries(app) {
+  app.innerHTML = "<p>Cargando...</p>";
+
+  const data = await getCatalog();
+  const series = data.filter(i => i.type === "series");
 
   app.innerHTML = `
     <h2>Series</h2>
     <div class="grid">
-      ${all.map(show => `
+      ${series.map(show => `
         <div class="card">
           <h3>${show.title}</h3>
           <small>${show.year}</small>
