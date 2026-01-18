@@ -295,7 +295,7 @@ small {
   max-height: 0;
   overflow: hidden;
   padding: 0 0.75rem;
-  background: #fafafa;
+  background: #fafafa00;
   transition: max-height 0.3s ease;
   font-size: 0.9rem;
 }
