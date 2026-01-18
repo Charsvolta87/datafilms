@@ -1,8 +1,7 @@
-// Firebase CDN (compatible con GitHub Pages)
+// Firebase CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { initializeFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Configuración de tu proyecto
 const firebaseConfig = {
   apiKey: "AIzaSyCGIkqTCq8tXbclZVNUnEmPUgNgVRXz_H0",
   authDomain: "datafilms-d3160.firebaseapp.com",
@@ -12,12 +11,9 @@ const firebaseConfig = {
   appId: "1:554321965868:web:2420b38a02e9e8b981b289"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
-// 👇 ESTA LÍNEA SOLUCIONA BRAVE / ADBLOCK / VPN
+// 👇 COMPATIBLE CON BRAVE / ADBLOCK / VPN
 export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true,
-
-// Exportar Firestore
-export const db = getFirestore(app);
+  experimentalForceLongPolling: true
+});
