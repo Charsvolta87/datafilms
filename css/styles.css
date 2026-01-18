@@ -264,3 +264,48 @@ small {
   flex: 1;
   padding: 0.5rem;
 }
+
+
+
+
+
+/* Accordion list */
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  cursor: pointer;
+  background: #fff;
+}
+
+.accordion-title {
+  font-weight: 600;
+}
+
+.accordion-icon {
+  transition: transform 0.2s ease;
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 0.75rem;
+  background: #fafafa;
+  transition: max-height 0.3s ease;
+  font-size: 0.9rem;
+}
+
+/* Expanded */
+.accordion-item.open .accordion-body {
+  max-height: 500px; /* suficiente para contenido */
+  padding-bottom: 0.75rem;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(90deg);
+}
