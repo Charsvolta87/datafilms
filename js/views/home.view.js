@@ -1,6 +1,7 @@
 import { getCatalog } from "../data/catalog.service.js";
 import { createCard } from "../components/card.js";
 
+
 export async function renderHome(container) {
   const titles = await getCatalog();
 

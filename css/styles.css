@@ -347,3 +347,28 @@ small {
 .accordion-item.open .accordion-icon {
   transform: rotate(90deg);
 }
+
+
+
+.sort-box {
+  position: sticky;
+  top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+  margin-bottom: 0.5rem;
+}
+
+#sortBtn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+#sortBtn:hover {
+  opacity: 0.85;
+}

@@ -1,12 +1,14 @@
 import { getCatalog } from "../data/catalog.service.js";
 import { createCard } from "../components/card.js";
 import { renderFilters, applyFilters } from "../components/filters.js";
+import { renderSortButton, applySort } from "../components/sort.js";
 
 export async function renderMovies(container) {
   const data = (await getCatalog()).filter(i => i.type === "movie");
 
   container.innerHTML = `
     <h2>Películas</h2>
+    ${renderSortButton()}
     ${renderFilters()}
     <div class="grid" id="moviesGrid"></div>
   `;
@@ -18,6 +20,6 @@ export async function renderMovies(container) {
     list.forEach(item => grid.appendChild(createCard(item)));
   }
 
-  render(data);
+  applySort(data, render);
   applyFilters(data, render);
 }
