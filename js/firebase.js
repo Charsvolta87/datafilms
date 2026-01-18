@@ -5,7 +5,9 @@ import {
   push,
   set,
   get,
-  child
+  child,
+  update,
+  remove
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
@@ -22,4 +24,4 @@ const app = initializeApp(firebaseConfig);
 
 // Realtime Database
 export const db = getDatabase(app);
-export { ref, push, set, get, child };
+export { ref, push, set, get, child, update, remove };
