@@ -372,3 +372,36 @@ small {
 #sortBtn:hover {
   opacity: 0.85;
 }
+
+
+
+/* --- Acciones de tarjeta (editar / borrar) --- */
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.card-actions button {
+  border: none;
+  background: transparent;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.card-actions button:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: scale(1.1);
+}
+
+.card-actions .delete:hover {
+  background: rgba(220, 38, 38, 0.15);
+}
+
+.card-actions .edit:hover {
+  background: rgba(37, 99, 235, 0.15);
+}
