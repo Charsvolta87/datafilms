@@ -15,5 +15,9 @@ const firebaseConfig = {
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
+// 👇 ESTA LÍNEA SOLUCIONA BRAVE / ADBLOCK / VPN
+export const db = initializeFirestore(app, {
+  experimentalForceLongPolling: true,
+
 // Exportar Firestore
 export const db = getFirestore(app);
