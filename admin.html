@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Administrar catálogo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <h1>⚙️ Administrar catálogo</h1>
+  <nav>
+    <a href="index.html#/">Volver</a>
+  </nav>
+</header>
+
+<main>
+  <form id="adminForm" class="card">
+    
+    <label>
+      Tipo
+      <select id="type" required>
+        <option value="movie">Película</option>
+        <option value="series">Serie</option>
+      </select>
+    </label>
+
+    <label>
+      Título
+      <input type="text" id="title" required>
+    </label>
+
+    <label>
+      Año de publicación
+      <input type="number" id="year" required>
+    </label>
+
+    <label>
+      Géneros (separados por coma)
+      <input type="text" id="genre">
+    </label>
+
+    <label>
+      Actores (separados por coma)
+      <input type="text" id="actors">
+    </label>
+
+    <label>
+      Director
+      <input type="text" id="director">
+    </label>
+
+    <div id="seriesFields" style="display:none">
+      <label>
+        Temporadas
+        <input type="number" id="seasons">
+      </label>
+
+      <label>
+        Episodios
+        <input type="number" id="episodes">
+      </label>
+    </div>
+
+    <label>
+      Observaciones
+      <textarea id="notes"></textarea>
+    </label>
+
+    <button type="submit">Guardar</button>
+  </form>
+</main>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
