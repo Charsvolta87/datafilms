@@ -1,3 +1,5 @@
+import { deleteTitle } from "../data/catalog.service.js";
+
 export function createCard(item) {
   const wrapper = document.createElement("div");
   wrapper.className = "accordion-item";
@@ -24,22 +26,37 @@ export function createCard(item) {
       }
 
       ${item.notes ? `<p><strong>Notas:</strong> ${item.notes}</p>` : ""}
+
+      <div class="card-actions">
+        <button class="edit">✏️</button>
+        <button class="delete">🗑️</button>
+      </div>
     </div>
   `;
 
+  /* Accordion */
   const header = wrapper.querySelector(".accordion-header");
-
-  header.addEventListener("click", () => {
-    const isOpen = wrapper.classList.contains("open");
-
-    // cerrar otros
-    document
-      .querySelectorAll(".accordion-item.open")
+  header.onclick = () => {
+    const open = wrapper.classList.contains("open");
+    document.querySelectorAll(".accordion-item.open")
       .forEach(el => el.classList.remove("open"));
+    if (!open) wrapper.classList.add("open");
+  };
 
-    // toggle actual
-    if (!isOpen) wrapper.classList.add("open");
-  });
+  /* Borrar */
+  wrapper.querySelector(".delete").onclick = async (e) => {
+    e.stopPropagation();
+    if (confirm("¿Eliminar este título?")) {
+      await deleteTitle(item.id);
+      location.reload();
+    }
+  };
+
+  /* Editar (placeholder) */
+  wrapper.querySelector(".edit").onclick = (e) => {
+    e.stopPropagation();
+    location.href = `admin.html?id=${item.id}`;
+  };
 
   return wrapper;
 }

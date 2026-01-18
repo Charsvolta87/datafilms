@@ -1,8 +1,17 @@
-import { db, ref, push, set, get, child } from "../firebase.js";
+import {
+  db,
+  ref,
+  push,
+  set,
+  get,
+  child,
+  update,
+  remove
+} from "../firebase.js";
 
 const COLLECTION = "catalog";
 
-/* Guardar título */
+/* CREAR */
 export async function addTitle(data) {
   const newRef = push(ref(db, COLLECTION));
   await set(newRef, {
@@ -11,7 +20,7 @@ export async function addTitle(data) {
   });
 }
 
-/* Obtener todo el catálogo */
+/* LEER */
 export async function getCatalog() {
   const snapshot = await get(child(ref(db), COLLECTION));
 
@@ -19,8 +28,22 @@ export async function getCatalog() {
 
   const data = snapshot.val();
 
-  return Object.keys(data).map(id => ({
-    id,
-    ...data[id]
-  })).sort((a, b) => b.createdAt - a.createdAt);
+  return Object.keys(data)
+    .map(id => ({
+      id,
+      ...data[id]
+    }))
+    .sort((a, b) => b.createdAt - a.createdAt);
+}
+
+/* EDITAR */
+export async function updateTitle(id, data) {
+  const itemRef = ref(db, `${COLLECTION}/${id}`);
+  await update(itemRef, data);
+}
+
+/* BORRAR */
+export async function deleteTitle(id) {
+  const itemRef = ref(db, `${COLLECTION}/${id}`);
+  await remove(itemRef);
 }
