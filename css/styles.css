@@ -405,3 +405,47 @@ small {
 .card-actions .edit:hover {
   background: rgba(37, 99, 235, 0.15);
 }
+
+
+.actors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.actor-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.actor-header {
+  padding: 12px;
+  font-weight: 600;
+  background: #f1f5f9;
+}
+
+.actor-body {
+  padding: 12px;
+}
+
+.actor-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.actor-body li {
+  padding: 4px 0;
+  font-size: 0.95rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+}

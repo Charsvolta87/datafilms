@@ -10,17 +10,23 @@ function router() {
 
   app.innerHTML = "";
 
-  if (route === "#/movies") {
-    renderMovies(app);
-  } 
-  else if (route === "#/series") {
-    renderSeries(app);
-  } 
-  else if (route === "#/actors") {
-    renderActors(app);
-  } 
-  else {
-    renderHome(app);
+  switch (route) {
+    case "#/movies":
+      renderMovies(app);
+      break;
+
+    case "#/series":
+      renderSeries(app);
+      break;
+
+    case "#/actors":
+      renderActors(app);
+      break;
+
+    case "#/":
+    default:
+      renderHome(app);
+      break;
   }
 }
 
