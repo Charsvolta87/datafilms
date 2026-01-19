@@ -1,9 +1,9 @@
-let currentSort = "created"; // default
+let currentSort = "alpha"; // default
 
 export function renderSortButton() {
   return `
     <div class="sort-box">
-      <button id="sortBtn">🆕 Últimos</button>
+      <button id="sortBtn">🔤 A–Z</button>
     </div>
   `;
 }
@@ -12,9 +12,9 @@ export function applySort(data, render) {
   const btn = document.getElementById("sortBtn");
 
   const modes = [
-    { id: "created", label: "🆕 Últimos" },
     { id: "alpha", label: "🔤 A–Z" },
-    { id: "year", label: "📅 Año" }
+    { id: "year", label: "📅 Año" },
+    { id: "created", label: "🆕 Últimos" }
   ];
 
   btn.addEventListener("click", () => {
@@ -47,3 +47,4 @@ function sortData(data) {
       );
   }
 }
+
