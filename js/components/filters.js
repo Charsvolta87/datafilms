@@ -20,6 +20,10 @@ export function renderFilters(options = {}) {
             </select>
           `
       }
+
+      <select id="directorFilter">
+        <option value="">Todos los directores</option>
+      </select>
     </div>
   `;
 }
@@ -32,12 +36,30 @@ export function applyFilters(data, render, options = {}) {
 
   const searchInput = document.getElementById("searchInput");
   const typeFilter = document.getElementById("typeFilter");
+  const directorFilter = document.getElementById("directorFilter");
+
+  // 🔹 Llenar directores UNA SOLA VEZ
+  if (directorFilter) {
+    const directors = [...new Set(
+      data
+        .map(item => item.director)
+        .filter(Boolean)
+    )].sort();
+
+    directors.forEach(director => {
+      const option = document.createElement("option");
+      option.value = director;
+      option.textContent = director;
+      directorFilter.appendChild(option);
+    });
+  }
 
   function filter() {
     let filtered = [...data];
 
     const searchValue = searchInput?.value.toLowerCase() || "";
     const typeValue = typeFilter?.value || "";
+    const directorValue = directorFilter?.value || "";
 
     if (searchValue) {
       filtered = filtered.filter(item => {
@@ -56,11 +78,19 @@ export function applyFilters(data, render, options = {}) {
       filtered = filtered.filter(item => item.type === typeValue);
     }
 
+    // 🎥 Filtro por director
+    if (directorValue) {
+      filtered = filtered.filter(
+        item => item.director === directorValue
+      );
+    }
+
     render(filtered);
   }
 
   searchInput?.addEventListener("input", filter);
   typeFilter?.addEventListener("change", filter);
+  directorFilter?.addEventListener("change", filter);
 
   render(data);
 }
