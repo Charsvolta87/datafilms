@@ -62,11 +62,11 @@ export async function renderActors(container) {
   }
 
   applyFilters(actors, render, {
-    searchFields: ["name"],
-    extraFilter: (actor, value) =>
-      actor.works.some(work =>
-        work.toLowerCase().includes(value)
-      )
-  });
+  searchFields: ["name"],
+  extraFilter: (actor, value) =>
+    actor.works.some(w =>
+      w.toLowerCase().includes(value)
+    )
+});
 
 }
