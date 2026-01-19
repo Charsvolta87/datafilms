@@ -1,4 +1,4 @@
-let currentSort = "alpha"; // default
+let currentSort = "alpha"; // siempre alfabético al cargar
 
 export function renderSortButton() {
   return `
@@ -7,7 +7,6 @@ export function renderSortButton() {
     </div>
   `;
 }
-
 
 export function applySort(data, render) {
   const btn = document.getElementById("sortBtn");
@@ -18,6 +17,10 @@ export function applySort(data, render) {
     { id: "created", label: "🆕 Últimos" }
   ];
 
+  // 🔥 FORZAR orden inicial SIEMPRE
+  currentSort = "alpha";
+  btn.textContent = modes.find(m => m.id === currentSort).label;
+  render(sortData(data));
 
   btn.addEventListener("click", () => {
     const index = modes.findIndex(m => m.id === currentSort);
@@ -25,8 +28,6 @@ export function applySort(data, render) {
     btn.textContent = modes.find(m => m.id === currentSort).label;
     render(sortData(data));
   });
-
-  render(sortData(data));
 }
 
 function sortData(data) {
@@ -35,7 +36,7 @@ function sortData(data) {
   switch (currentSort) {
     case "alpha":
       return list.sort((a, b) =>
-        a.title.localeCompare(b.title)
+        (a.title || "").localeCompare(b.title || "")
       );
 
     case "year":
@@ -43,9 +44,12 @@ function sortData(data) {
         (b.year || 0) - (a.year || 0)
       );
 
-    default:
+    case "created":
       return list.sort((a, b) =>
         (b.createdAt || 0) - (a.createdAt || 0)
       );
+
+    default:
+      return list;
   }
 }
