@@ -20,9 +20,8 @@ export async function renderMovies(container) {
     list.forEach(item => grid.appendChild(createCard(item)));
   }
 
-  applySort(data, render);
-  applyFilters(data, render, {
-  searchFields: ["title", "director", "actors"]
-});
+  applySort(data, sorted => {
+    applyFilters(sorted, render);
+  });
 
 }

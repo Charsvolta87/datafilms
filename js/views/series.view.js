@@ -20,6 +20,7 @@ export async function renderSeries(container) {
     list.forEach(item => grid.appendChild(createCard(item)));
   }
 
-  applySort(data, render);
-  applyFilters(data, render);
+  applySort(data, sorted => {
+    applyFilters(sorted, render);
+  });
 }

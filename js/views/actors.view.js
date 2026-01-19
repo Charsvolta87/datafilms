@@ -21,7 +21,9 @@ export async function renderActors(container) {
     });
   });
 
-  const actors = Object.values(actorsMap);
+  const actors = Object.values(actorsMap).sort((a, b) =>
+  a.name.localeCompare(b.name)
+);
 
   container.innerHTML = `
     <h2>Actores</h2>
