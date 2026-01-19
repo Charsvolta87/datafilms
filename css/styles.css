@@ -414,10 +414,10 @@ small {
 }
 
 .actor-card {
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e7eb26;
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
+  background: #ffffff00;
 }
 
 .actor-header {
