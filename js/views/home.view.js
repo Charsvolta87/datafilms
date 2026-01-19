@@ -20,8 +20,14 @@ export async function renderHome(container) {
     list.forEach(item => grid.appendChild(createCard(item)));
   }
 
-  applySort(data, sorted => {
-    applyFilters(sorted, render);
-  });
+  applyFilters(actors, render, {
+  searchFields: ["name"],
+  extraFilter: (actor, value) =>
+    actor.works.some(w =>
+      w.toLowerCase().includes(value)
+    )
+});
+
+
 }
 

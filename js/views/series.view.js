@@ -21,6 +21,9 @@ export async function renderSeries(container) {
   }
 
   applySort(data, sorted => {
-    applyFilters(sorted, render);
+  applyFilters(sorted, render, {
+    searchFields: ["title", "actors", "director"]
   });
+});
+
 }
