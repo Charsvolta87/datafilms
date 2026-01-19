@@ -26,12 +26,28 @@ export function renderFilters(options = {}) {
 
 export function applyFilters(data, render, options = {}) {
   const {
-    searchKey = "title",
+    searchFields = ["title"],
     extraFilter = null
   } = options;
 
   const searchInput = document.getElementById("searchInput");
   const typeFilter = document.getElementById("typeFilter");
+
+  function matchesSearch(item, value) {
+    return searchFields.some(field => {
+      const fieldValue = item[field];
+
+      if (!fieldValue) return false;
+
+      if (Array.isArray(fieldValue)) {
+        return fieldValue.some(v =>
+          v.toLowerCase().includes(value)
+        );
+      }
+
+      return fieldValue.toLowerCase().includes(value);
+    });
+  }
 
   function filter() {
     let filtered = [...data];
@@ -41,9 +57,7 @@ export function applyFilters(data, render, options = {}) {
 
     if (searchValue) {
       filtered = filtered.filter(item => {
-        const mainMatch =
-          item[searchKey]?.toLowerCase().includes(searchValue);
-
+        const mainMatch = matchesSearch(item, searchValue);
         const extraMatch = extraFilter
           ? extraFilter(item, searchValue)
           : false;
