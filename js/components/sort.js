@@ -32,13 +32,14 @@ function sortData(data) {
 
   switch (currentSort) {
 
-      case:
-      return list.sort((a, b) =>
-        (b.createdAt || 0) - (a.createdAt || 0)
-      );
     case "year":
       return list.sort((a, b) =>
         (b.year || 0) - (a.year || 0)
+      );
+
+    case:
+      return list.sort((a, b) =>
+        (b.createdAt || 0) - (a.createdAt || 0)
       );
 
     default "alpha":
@@ -47,5 +48,6 @@ function sortData(data) {
       );
   }
 }
+
 
 
