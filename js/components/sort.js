@@ -31,20 +31,21 @@ function sortData(data) {
   const list = [...data];
 
   switch (currentSort) {
-    case "alpha":
-      return list.sort((a, b) =>
-        a.title.localeCompare(b.title)
-      );
 
+      case:
+      return list.sort((a, b) =>
+        (b.createdAt || 0) - (a.createdAt || 0)
+      );
     case "year":
       return list.sort((a, b) =>
         (b.year || 0) - (a.year || 0)
       );
 
-    default:
+    default "alpha":
       return list.sort((a, b) =>
-        (b.createdAt || 0) - (a.createdAt || 0)
+        a.title.localeCompare(b.title)
       );
   }
 }
+
 
