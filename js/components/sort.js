@@ -14,7 +14,7 @@ export function applySort(data, render) {
   const modes = [
     { id: "alpha", label: "🔤 A–Z" },
     { id: "year", label: "📅 Año" },
-    { id: "created", label: "🆕 Últimos" }
+    
   ];
 
   // 🔥 FORZAR orden inicial SIEMPRE
@@ -44,10 +44,7 @@ function sortData(data) {
         (b.year || 0) - (a.year || 0)
       );
 
-    case "created":
-      return list.sort((a, b) =>
-        (b.createdAt || 0) - (a.createdAt || 0)
-      );
+    
 
     default:
       return list;
