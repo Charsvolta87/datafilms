@@ -449,3 +449,129 @@ small {
   border-radius: 6px;
   margin-left: 6px;
 }
+
+
+
+
+
+
+
+
+
+/* =========================
+   DESKTOP ENHANCEMENTS
+========================= */
+
+@media (min-width: 1024px) {
+
+  /* --- Layout general --- */
+
+  main {
+    max-width: 1200px;
+    padding: 24px;
+  }
+
+  /* --- Header --- */
+
+  .header {
+    padding: 1rem 2rem;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+    letter-spacing: 0.3px;
+  }
+
+  .header nav a {
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .header nav a:hover {
+    opacity: 1;
+  }
+
+  /* --- Filtros + sort --- */
+
+  .filters {
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filters input {
+    max-width: 360px;
+  }
+
+  .filters select {
+    max-width: 180px;
+  }
+
+  .sort-box {
+    position: static;
+    margin-bottom: 0;
+  }
+
+  /* --- Grid catálogo --- */
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  /* --- Cards --- */
+
+  .card {
+    padding: 18px;
+    border-radius: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.45);
+  }
+
+  .card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+  }
+
+  .card small {
+    font-size: 0.8rem;
+  }
+
+  /* --- Acciones de tarjeta --- */
+
+  .card-actions {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .card:hover .card-actions {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .card-actions button {
+    font-size: 1.15rem;
+  }
+
+  /* --- Actor list --- */
+
+  .actors-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .actor-card {
+    border-radius: 12px;
+  }
+
+  .actor-header {
+    font-size: 1rem;
+  }
+
+}
