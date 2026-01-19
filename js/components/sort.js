@@ -37,7 +37,7 @@ function sortData(data) {
         (b.year || 0) - (a.year || 0)
       );
 
-    case:
+    case
       return list.sort((a, b) =>
         (b.createdAt || 0) - (a.createdAt || 0)
       );
@@ -48,6 +48,7 @@ function sortData(data) {
       );
   }
 }
+
 
 
 
