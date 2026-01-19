@@ -6,7 +6,7 @@ export function renderFilters(options = {}) {
       <input
         type="text"
         id="searchInput"
-        placeholder="Buscar..."
+        placeholder="Buscar título, actor o director..."
       />
 
       ${
