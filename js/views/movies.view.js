@@ -22,11 +22,12 @@ export async function renderMovies(container) {
     list.forEach(item => grid.appendChild(createCard(item)));
   }
 
-  applySort(data, sortedData => {
+  applySort(originalData, sortedData => {
   applyFilters(sortedData, render, {
     searchFields: ["title", "actors", "director"]
   });
 });
+
 
 }
 
