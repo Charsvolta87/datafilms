@@ -60,10 +60,11 @@ export async function renderActors(container) {
   }
 
   applyFilters(actors, render, {
-    searchKey: "name",
+    searchFields: ["name"],
     extraFilter: (actor, value) =>
       actor.works.some(work =>
         work.toLowerCase().includes(value)
       )
   });
+
 }
