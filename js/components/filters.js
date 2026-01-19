@@ -1,49 +1,66 @@
-export function renderFilters() {
+export function renderFilters(options = {}) {
+  const { hideType = false } = options;
+
   return `
     <div class="filters">
-      <input type="text" id="fText" placeholder="Buscar por título">
-      <input type="text" id="fGenre" placeholder="Género">
-      <input type="text" id="fActor" placeholder="Actor">
-      <input type="number" id="fYear" placeholder="Año">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar..."
+      />
+
+      ${
+        hideType
+          ? ""
+          : `
+            <select id="typeFilter">
+              <option value="">Todos</option>
+              <option value="movie">Películas</option>
+              <option value="series">Series</option>
+            </select>
+          `
+      }
     </div>
   `;
 }
 
-export function applyFilters(data, render) {
-  const fText = document.getElementById("fText");
-  const fGenre = document.getElementById("fGenre");
-  const fActor = document.getElementById("fActor");
-  const fYear = document.getElementById("fYear");
+export function applyFilters(data, render, options = {}) {
+  const {
+    searchKey = "title",
+    extraFilter = null
+  } = options;
+
+  const searchInput = document.getElementById("searchInput");
+  const typeFilter = document.getElementById("typeFilter");
 
   function filter() {
-    let result = data;
+    let filtered = [...data];
 
-    if (fText.value)
-      result = result.filter(i =>
-        i.title.toLowerCase().includes(fText.value.toLowerCase())
-      );
+    const searchValue = searchInput?.value.toLowerCase() || "";
+    const typeValue = typeFilter?.value || "";
 
-    if (fGenre.value)
-      result = result.filter(i =>
-        i.genre?.some(g =>
-          g.toLowerCase().includes(fGenre.value.toLowerCase())
-        )
-      );
+    if (searchValue) {
+      filtered = filtered.filter(item => {
+        const mainMatch =
+          item[searchKey]?.toLowerCase().includes(searchValue);
 
-    if (fActor.value)
-      result = result.filter(i =>
-        i.actors?.some(a =>
-          a.toLowerCase().includes(fActor.value.toLowerCase())
-        )
-      );
+        const extraMatch = extraFilter
+          ? extraFilter(item, searchValue)
+          : false;
 
-    if (fYear.value)
-      result = result.filter(i => i.year == fYear.value);
+        return mainMatch || extraMatch;
+      });
+    }
 
-    render(result);
+    if (typeValue) {
+      filtered = filtered.filter(item => item.type === typeValue);
+    }
+
+    render(filtered);
   }
 
-  [fText, fGenre, fActor, fYear].forEach(i =>
-    i.addEventListener("input", filter)
-  );
+  searchInput?.addEventListener("input", filter);
+  typeFilter?.addEventListener("change", filter);
+
+  render(data);
 }
