@@ -27,5 +27,6 @@ export async function renderMovies(container) {
     searchFields: ["title", "actors", "director"]
   });
 });
+
 }
 
