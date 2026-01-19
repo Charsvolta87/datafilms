@@ -4,7 +4,7 @@ import { renderFilters, applyFilters } from "../components/filters.js";
 import { renderSortButton, applySort } from "../components/sort.js";
 
 export async function renderHome(container) {
-  const data = await getCatalog();
+  const data = await getCatalog(); // SOLO títulos
 
   container.innerHTML = `
     <h2>Catálogo</h2>
@@ -20,14 +20,9 @@ export async function renderHome(container) {
     list.forEach(item => grid.appendChild(createCard(item)));
   }
 
-  applyFilters(actors, render, {
-  searchFields: ["name"],
-  extraFilter: (actor, value) =>
-    actor.works.some(w =>
-      w.toLowerCase().includes(value)
-    )
-});
-
-
+  applySort(data, sorted => {
+    applyFilters(sorted, render, {
+      searchFields: ["title", "actors", "director"]
+    });
+  });
 }
-
