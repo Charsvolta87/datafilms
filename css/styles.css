@@ -7,7 +7,9 @@ body {
   font-family: system-ui, sans-serif;
   background: #0f0f0f;
   color: #fff;
-}
+  }
+
+
 
 .header {
   padding: 12px;
@@ -574,4 +576,12 @@ small {
     font-size: 1rem;
   }
 
+}
+
+/* =========================
+   CURSOR PERSONALIZADO
+========================= */
+
+body {
+  cursor: url("imagenes/Clapperboard Animated--pointer--SweezyCursors..cur"), auto;
 }
