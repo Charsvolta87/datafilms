@@ -472,7 +472,9 @@ small {
     max-width: 1200px;
     padding: 24px;
   }
-
+  body{
+    background: white;
+ }
   /* --- Header --- */
 
   .header {
