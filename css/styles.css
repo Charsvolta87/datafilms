@@ -582,6 +582,15 @@ small {
    CURSOR PERSONALIZADO
 ========================= */
 
+a,
+button,
+#sortBtn,
+.card,
+.accordion-header {
+  cursor: url("imagenes/Clapperboard Animated--pointer--SweezyCursors..cur"), pointer;
+}
+
 body {
-  cursor: url("imagenes/Clapperboard Animated--cursor--SweezyCursors.png"), auto;
+  cursor: url("../imagenes/Clapperboard Animated--pointer--SweezyCursors..cur"), auto;
+
 }
